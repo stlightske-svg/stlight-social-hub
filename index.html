@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ST.LIGHT | Connect With Us</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --blue:#0f5fd7;
+    --yellow:#ffbf1a;
+    --text:#0f172a;
+}
+
+body{
+    font-family:'Outfit',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+    background:
+    radial-gradient(circle at top left, rgba(255,191,26,0.35), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(15,95,215,0.25), transparent 35%),
+    linear-gradient(135deg,#ffffff 0%, #eef6ff 45%, #fffdf5 100%);
+    position:relative;
+    color:var(--text);
+}
+
+/* FLOATING SOLAR BACKGROUND */
+.bg-elements{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+}
+
+.solar-card{
+    position:absolute;
+    opacity:0.08;
+    animation:float 8s ease-in-out infinite;
+}
+
+.solar-card svg{
+    width:100%;
+    height:100%;
+}
+
+.card1{
+    width:180px;
+    top:7%;
+    right:5%;
+}
+
+.card2{
+    width:140px;
+    bottom:10%;
+    left:4%;
+    animation-delay:2s;
+}
+
+.card3{
+    width:110px;
+    top:55%;
+    right:10%;
+    animation-delay:1s;
+}
+
+.sun-glow{
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(255,191,26,0.25), transparent 70%);
+    top:-100px;
+    left:-100px;
+}
+
+.blue-glow{
+    position:absolute;
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(15,95,215,0.18), transparent 70%);
+    bottom:-100px;
+    right:-100px;
+}
+
+@keyframes float{
+    0%{transform:translateY(0px) rotate(0deg);}
+    50%{transform:translateY(-25px) rotate(4deg);}
+    100%{transform:translateY(0px) rotate(0deg);}
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:520px;
+    margin:auto;
+    padding:40px 20px 60px;
+}
+
+.logo-box{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.logo-box img{
+    width:130px;
+    object-fit:contain;
+    display:block;
+    margin:auto;
+}
+
+.brand{
+    font-size:52px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--blue);
+    line-height:1;
+}
+
+.tagline{
+    margin-top:8px;
+    font-size:14px;
+    color:#4b5563;
+    letter-spacing:2px;
+}
+
+.main-card{
+    background:rgba(255,255,255,0.75);
+    border:1px solid rgba(255,255,255,0.7);
+    backdrop-filter:blur(18px);
+    border-radius:28px;
+    padding:28px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+.scan-title{
+    text-align:center;
+    font-size:14px;
+    letter-spacing:3px;
+    font-weight:700;
+    color:var(--blue);
+    margin-bottom:18px;
+}
+
+.qr-wrapper{
+    position:relative;
+    width:250px;
+    height:250px;
+    margin:auto;
+    background:white;
+    border-radius:24px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 10px 30px rgba(15,95,215,0.12);
+}
+
+#qrcode{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#qrcode img,
+#qrcode canvas{
+    border-radius:16px;
+}
+
+.qr-logo{
+    position:absolute;
+    width:58px;
+    height:58px;
+    background:white;
+    border-radius:16px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 4px 14px rgba(0,0,0,0.15);
+}
+
+.qr-logo img{
+    width:80%;
+    height:80%;
+    object-fit:contain;
+}
+
+.scan-note{
+    text-align:center;
+    margin-top:18px;
+    color:#475569;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.divider{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin:30px 0;
+}
+
+.divider::before,
+.divider::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:#d7e5ff;
+}
+
+.divider span{
+    font-size:13px;
+    color:#64748b;
+}
+
+.links{
+    display:grid;
+    gap:16px;
+}
+
+.social-btn{
+    text-decoration:none;
+    color:white;
+    padding:18px 20px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-weight:600;
+    transition:0.3s ease;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.social-btn:hover{
+    transform:translateY(-4px);
+}
+
+.facebook{
+    background:linear-gradient(135deg,#1877f2,#0c56b8);
+}
+
+.instagram{
+    background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);
+}
+
+.tiktok{
+    background:linear-gradient(135deg,#111111,#333333);
+}
+
+.whatsapp{
+    background:linear-gradient(135deg,#25d366,#0ca34a);
+}
+
+.social-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.icon{
+    width:46px;
+    height:46px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.18);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:20px;
+}
+
+.footer{
+    text-align:center;
+    margin-top:28px;
+    color:#64748b;
+    font-size:13px;
+}
+
+@media(max-width:600px){
+
+    .brand{
+        font-size:42px;
+    }
+
+    .main-card{
+        padding:22px;
+    }
+
+    .qr-wrapper{
+        width:220px;
+        height:220px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-elements">
+
+    <div class="sun-glow"></div>
+    <div class="blue-glow"></div>
+
+    <div class="solar-card card1">
+        <svg viewBox="0 0 120 80">
+            <rect x="4" y="4" width="112" height="72" rx="6" fill="#0f5fd7" />
+            <line x1="40" y1="4" x2="40" y2="76" stroke="white" opacity="0.4" />
+            <line x1="80" y1="4" x2="80" y2="76" stroke="white" opacity="0.4" />
+            <line x1="4" y1="26" x2="116" y2="26" stroke="white" opacity="0.4" />
+            <line x1="4" y1="52" x2="116" y2="52" stroke="white" opacity="0.4" />
+        </svg>
+    </div>
+
+    <div class="solar-card card2">
+        <svg viewBox="0 0 120 80">
+            <rect x="4" y="4" width="112" height="72" rx="6" fill="#0f5fd7" />
+            <line x1="40" y1="4" x2="40" y2="76" stroke="white" opacity="0.4" />
+            <line x1="80" y1="4" x2="80" y2="76" stroke="white" opacity="0.4" />
+            <line x1="4" y1="26" x2="116" y2="26" stroke="white" opacity="0.4" />
+            <line x1="4" y1="52" x2="116" y2="52" stroke="white" opacity="0.4" />
+        </svg>
+    </div>
+
+    <div class="solar-card card3">
+        <svg viewBox="0 0 120 80">
+            <rect x="4" y="4" width="112" height="72" rx="6" fill="#0f5fd7" />
+            <line x1="40" y1="4" x2="40" y2="76" stroke="white" opacity="0.4" />
+            <line x1="80" y1="4" x2="80" y2="76" stroke="white" opacity="0.4" />
+            <line x1="4" y1="26" x2="116" y2="26" stroke="white" opacity="0.4" />
+            <line x1="4" y1="52" x2="116" y2="52" stroke="white" opacity="0.4" />
+        </svg>
+    </div>
+
+</div>
+
+<div class="container">
+
+    <div class="logo-box">
+        <img src="Logo White.png" alt="ST.LIGHT Logo">
+        <div class="brand">ST.LIGHT</div>
+        <div class="tagline">Solar Energy Solutions Kenya</div>
+    </div>
+
+    <div class="main-card">
+
+        <div class="scan-title">SCAN TO CONNECT</div>
+
+        <div class="qr-wrapper">
+
+            <div id="qrcode"></div>
+
+            <div class="qr-logo">
+                <img src="Logo White.png" alt="logo">
+            </div>
+
+        </div>
+
+        <div class="scan-note">
+            Scan the QR code to access all ST.LIGHT social media pages instantly.
+        </div>
+
+        <div class="divider">
+            <span>OR OPEN DIRECTLY</span>
+        </div>
+
+        <div class="links">
+
+            <a class="social-btn whatsapp" href="https://whatsapp.com/channel/0029Vb7ZJQfADTOD8BAdkZ03" target="_blank">
+                <div class="social-left">
+                    <div class="icon">💬</div>
+                    <div>WhatsApp Channel</div>
+                </div>
+                <div>Join</div>
+            </a>
+
+            <a class="social-btn facebook" href="https://www.facebook.com/stlightke" target="_blank">
+                <div class="social-left">
+                    <div class="icon">f</div>
+                    <div>Facebook</div>
+                </div>
+                <div>Open</div>
+            </a>
+
+            <a class="social-btn instagram" href="https://www.instagram.com/stlightke/" target="_blank">
+                <div class="social-left">
+                    <div class="icon">◎</div>
+                    <div>Instagram</div>
+                </div>
+                <div>Open</div>
+            </a>
+
+            <a class="social-btn tiktok" href="https://www.tiktok.com/@stlightke" target="_blank">
+                <div class="social-left">
+                    <div class="icon">♪</div>
+                    <div>TikTok</div>
+                </div>
+                <div>Open</div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2026 ST.LIGHT Kenya • Clean Energy For Tomorrow
+    </div>
+
+</div>
+
+<script>
+
+/*
+Replace the URL below with your real hosted website URL
+Example:
+https://stlightke.netlify.app
+*/
+
+const WEBSITE_URL = "https://stlightske-svg.github.io/stlight-social-hub/";
+
+new QRCode(document.getElementById("qrcode"), {
+    text: WEBSITE_URL,
+    width: 200,
+    height: 200,
+    colorDark: "#0f172a",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+});
+
+</script>
+
+</body>
+</html>
